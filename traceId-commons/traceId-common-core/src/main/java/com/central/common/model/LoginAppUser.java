@@ -1,20 +1,19 @@
 package com.central.common.model;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.social.security.SocialUserDetails;
 import org.springframework.util.CollectionUtils;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import lombok.Getter;
-import lombok.Setter;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
+ * @author zlt
  * 用户实体绑定spring security
  */
 @Getter

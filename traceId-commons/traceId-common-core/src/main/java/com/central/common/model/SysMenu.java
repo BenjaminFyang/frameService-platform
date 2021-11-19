@@ -1,12 +1,12 @@
 package com.central.common.model;
 
-import java.util.List;
-import java.util.Set;
-
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.util.List;
+import java.util.Set;
 
 
 @Data

@@ -16,7 +16,6 @@ import java.io.IOException;
 /**
  * web过滤器，生成日志链路追踪id，并赋值MDC
  */
-
 @ConditionalOnClass(value = {HttpServletRequest.class, OncePerRequestFilter.class})
 @Order(value = MDCTraceUtils.FILTER_ORDER)
 public class WebTraceFilter extends OncePerRequestFilter {

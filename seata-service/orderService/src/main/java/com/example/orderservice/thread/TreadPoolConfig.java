@@ -65,16 +65,4 @@ public class TreadPoolConfig {
                 .build();
 
     }
-
-    @Bean(value = "consumerQueueTwoThreadPool")
-    public ExecutorService newExecutor() {
-        ThreadFactory namedThreadFactory = new ThreadFactoryBuilder().
-                setNameFormat("consumer-queue_two-thread-%d")
-                .build();
-
-        ExecutorService executorService = buildExecutor(namedThreadFactory);
-        return TtlExecutors.getTtlExecutorService(executorService);
-
-    }
-
 }

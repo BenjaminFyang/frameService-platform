@@ -6,12 +6,12 @@ package com.central.common.model;
  */
 public enum UserType {
 
-	/**
-	 * 前端app用户
-	 */
-	APP,
-	/**
-	 * 后端管理用户
-	 */
-	BACKEND
+    /**
+     * 前端app用户
+     */
+    APP,
+    /**
+     * 后端管理用户
+     */
+    BACKEND
 }

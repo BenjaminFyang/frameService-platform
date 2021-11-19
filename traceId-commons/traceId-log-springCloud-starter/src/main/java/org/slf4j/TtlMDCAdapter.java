@@ -33,6 +33,7 @@ public class TtlMDCAdapter implements MDCAdapter {
 
     public static MDCAdapter getInstance() {
         return mtcMDCAdapter;
+
     }
 
     private Integer getAndSetLastOperation(int op) {
