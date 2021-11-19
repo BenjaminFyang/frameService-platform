@@ -1,0 +1,50 @@
+server:
+  port: 9901
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8001/eureka/
+
+spring:
+  application:
+    name: sc-gateway
+
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          lowerCaseServiceId: true
+          enabled: true
+      routes:
+        - id: account
+          uri: lb://seata-account-service
+          predicates:
+            - Path=/api-account/**
+          filters:
+            - StripPrefix=1
+            - PreserveHostHeader
+        - id: order
+          uri: lb://seata-order-service
+          predicates:
+            - Path=/api-order/**
+          filters:
+            - StripPrefix=1
+        - id: storage
+          uri: lb://seata-storageService-service
+          predicates:
+            - Path=/api-storageService/**
+          filters:
+            - StripPrefix=1
+
+  gateway:
+    #网关动态路由
+    dynamicRoute:
+      enabled: true
+
+
+
+
+logging:
+  level:
+    org.springframework.cloud.gateway: debug
