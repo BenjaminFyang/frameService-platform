@@ -51,38 +51,9 @@ public class FeignHttpInterceptorConfig {
                         }
                     }
                 }
-                //传递access_token，无网络隔离时需要传递
-                /*
-                String token = extractHeaderToken(request);
-                if (StrUtil.isEmpty(token)) {
-                    token = request.getParameter(CommonConstant.ACCESS_TOKEN);
-                }
-                if (StrUtil.isNotEmpty(token)) {
-                    template.header(CommonConstant.TOKEN_HEADER, CommonConstant.BEARER_TYPE + " " + token);
-                }
-                */
             }
         };
     }
 
-    /**
-     * 解析head中的token
-     *
-     * @param request
-     */
-    private String extractHeaderToken(HttpServletRequest request) {
-        Enumeration<String> headers = request.getHeaders(CommonConstant.TOKEN_HEADER);
-        while (headers.hasMoreElements()) {
-            String value = headers.nextElement();
-            if ((value.toLowerCase().startsWith(CommonConstant.BEARER_TYPE.toLowerCase()))) {
-                String authHeaderValue = value.substring(CommonConstant.BEARER_TYPE.length()).trim();
-                int commaIndex = authHeaderValue.indexOf(',');
-                if (commaIndex > 0) {
-                    authHeaderValue = authHeaderValue.substring(0, commaIndex);
-                }
-                return authHeaderValue;
-            }
-        }
-        return null;
-    }
+
 }

@@ -13,7 +13,5 @@ public class TtlMDCAdapterInitializer implements ApplicationContextInitializer<C
     public void initialize(ConfigurableApplicationContext applicationContext) {
         //加载TtlMDCAdapter实例
         TtlMDCAdapter.getInstance();
-
-
     }
 }

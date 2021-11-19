@@ -9,13 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 多租户配置
- * @author zlt
- * @date 2019/8/5
+ * 配置
  */
 @Setter
 @Getter
-@ConfigurationProperties(prefix = "zlt.tenant")
+//@ConfigurationProperties(prefix = "zlt.tenant")
 @RefreshScope
 public class TenantProperties {
     /**
