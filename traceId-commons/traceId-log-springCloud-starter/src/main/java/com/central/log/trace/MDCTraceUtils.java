@@ -7,7 +7,6 @@ import java.util.UUID;
 /**
  * 日志追踪工具类
  */
-
 public class MDCTraceUtils {
     /**
      * 追踪id的名称

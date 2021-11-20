@@ -1,6 +1,5 @@
 package com.example.orderservice.service.impl;
 
-import com.alibaba.ttl.threadpool.TtlExecutors;
 import com.example.orderservice.domain.Order;
 import com.example.orderservice.service.AccountService;
 import com.example.orderservice.service.OrderService;
@@ -18,7 +17,6 @@ import java.util.stream.Collectors;
 
 /**
  * 订单业务实现类
- * Created by macro on 2019/11/11.
  */
 @Service
 public class OrderServiceImpl implements OrderService {
