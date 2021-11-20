@@ -3,7 +3,10 @@ package com.example.orderservice.controller;
 import com.central.common.api.CommonResult;
 import com.example.orderservice.domain.Order;
 import com.example.orderservice.service.OrderService;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
@@ -22,4 +25,5 @@ public class OrderController {
         orderService.create(order);
         return CommonResult.success("订单创建成功!");
     }
+
 }

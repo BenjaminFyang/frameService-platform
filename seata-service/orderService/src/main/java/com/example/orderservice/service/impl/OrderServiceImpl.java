@@ -1,12 +1,18 @@
 package com.example.orderservice.service.impl;
 
+import com.central.common.constant.CommonConstant;
+import com.example.orderservice.domain.Demo01Message;
 import com.example.orderservice.domain.Order;
 import com.example.orderservice.service.AccountService;
 import com.example.orderservice.service.OrderService;
 import com.example.orderservice.service.StorageService;
 import org.apache.commons.compress.utils.Lists;
+import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
+import org.springframework.messaging.Message;
+import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -31,6 +37,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Resource(name = "consumerQueueThreadPool")
     private ExecutorService executorService;
+
+    @Resource
+    private RocketMQTemplate rocketMQTemplate;
 
     /**
      * 创建订单->调用库存服务扣减库存->调用账户服务扣减账户余额->修改订单状态
@@ -61,9 +70,16 @@ public class OrderServiceImpl implements OrderService {
         });
 
 
+        // 同步发送消息
+        Message<Order> message = MessageBuilder.withPayload(order).setHeader(CommonConstant.TRACE_ID_HEADER, 22222).build();
+        rocketMQTemplate.syncSend(Demo01Message.TOPIC, message);
+
+
         LOGGER.info("------->下单开始");
         //本应用创建订单
         LOGGER.info("------->order-service中创建订单");
+
+        MDC.put(CommonConstant.TRACE_ID_HEADER, "2323232");
 
         //远程调用库存服务扣减库存
         LOGGER.info("------->order-service中扣减库存开始");
