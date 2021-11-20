@@ -1,6 +1,7 @@
 package com.example.orderservice.service.impl;
 
 import com.central.common.constant.CommonConstant;
+import com.central.log.trace.MDCTraceUtils;
 import com.example.orderservice.domain.Demo01Message;
 import com.example.orderservice.domain.Order;
 import com.example.orderservice.service.AccountService;
@@ -71,7 +72,7 @@ public class OrderServiceImpl implements OrderService {
 
 
         // 同步发送消息
-        Message<Order> message = MessageBuilder.withPayload(order).setHeader(CommonConstant.TRACE_ID_HEADER, 22222).build();
+        Message<Order> message = MessageBuilder.withPayload(order).setHeader(CommonConstant.TRACE_ID_HEADER, MDCTraceUtils.getTraceId()).build();
         rocketMQTemplate.syncSend(Demo01Message.TOPIC, message);
 
 

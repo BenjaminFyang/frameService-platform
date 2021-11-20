@@ -24,4 +24,6 @@ public class Order implements Serializable {
      */
     private Integer status;
 
+    public Order() {
+    }
 }
