@@ -15,6 +15,7 @@
     <modules>
         <module>traceId-log-springCloud-starter</module>
         <module>traceId-common-core</module>
+        <module>traceId-rocketmq-starter</module>
     </modules>
 
 </project>

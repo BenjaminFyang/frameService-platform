@@ -4,8 +4,6 @@ import java.lang.annotation.*;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author zlt
- * @date 2020/6/6
  * <p>
  * Blog: https://zlt2000.gitee.io
  * Github: https://github.com/zlt2000

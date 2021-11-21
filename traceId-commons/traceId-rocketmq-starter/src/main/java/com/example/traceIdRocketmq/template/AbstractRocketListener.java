@@ -1,4 +1,4 @@
-package com.example.orderservice.consumer;
+package com.example.traceIdRocketmq.template;
 
 import com.alibaba.fastjson.JSON;
 import com.central.common.constant.CommonConstant;
@@ -34,7 +34,12 @@ public abstract class AbstractRocketListener<T> implements RocketMQListener<Mess
 
     }
 
-    public abstract void doJob(T body);
+    /**
+     * 模版方法 业务消息处理
+     *
+     * @param t the Object
+     */
+    public abstract void doJob(T t);
 
 
 }

@@ -17,15 +17,12 @@ import org.springframework.expression.spel.support.StandardEvaluationContext;
 /**
  * 分布式锁切面
  *
- * @author zlt
  * @date 2020/6/6
- * <p>
- * Blog: https://zlt2000.gitee.io
- * Github: https://github.com/zlt2000
  */
 @Slf4j
 @Aspect
 public class LockAspect {
+
     @Autowired(required = false)
     private DistributedLock locker;
 

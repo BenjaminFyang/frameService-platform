@@ -7,6 +7,7 @@ import com.example.orderservice.domain.Order;
 import com.example.orderservice.service.AccountService;
 import com.example.orderservice.service.OrderService;
 import com.example.orderservice.service.StorageService;
+import com.example.traceIdRocketmq.template.RocketMQTemplateProducer;
 import org.apache.commons.compress.utils.Lists;
 import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.slf4j.Logger;
@@ -40,7 +41,7 @@ public class OrderServiceImpl implements OrderService {
     private ExecutorService executorService;
 
     @Resource
-    private RocketMQTemplate rocketMQTemplate;
+    private RocketMQTemplateProducer rocketMQTemplateProducer;
 
     /**
      * 创建订单->调用库存服务扣减库存->调用账户服务扣减账户余额->修改订单状态
@@ -70,17 +71,13 @@ public class OrderServiceImpl implements OrderService {
             LOGGER.info("下单异步数据统计.");
         });
 
-
         // 同步发送消息
-        Message<Order> message = MessageBuilder.withPayload(order).setHeader(CommonConstant.TRACE_ID_HEADER, MDCTraceUtils.getTraceId()).build();
-        rocketMQTemplate.syncSend(Demo01Message.TOPIC, message);
-
+        rocketMQTemplateProducer.syncSendMessage(Demo01Message.TOPIC, order);
 
         LOGGER.info("------->下单开始");
         //本应用创建订单
         LOGGER.info("------->order-service中创建订单");
 
-        MDC.put(CommonConstant.TRACE_ID_HEADER, "2323232");
 
         //远程调用库存服务扣减库存
         LOGGER.info("------->order-service中扣减库存开始");
