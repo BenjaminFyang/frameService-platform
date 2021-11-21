@@ -53,8 +53,9 @@ public class RocketMQTemplateProducer {
      * @param message 消息体
      */
     public void sendMessage(String topic, Object message) {
-        this.rocketMQTemplate.convertAndSend(topic, message);
-        LOGGER.info("普通消息发送完成：message = {}", message);
+        Message<Object> objectMessage = MessageBuilder.withPayload(message).setHeader(CommonConstant.TRACE_ID_HEADER, MDCTraceUtils.getTraceId()).build();
+        this.rocketMQTemplate.convertAndSend(topic, objectMessage);
+        LOGGER.info("普通消息发送完成：message = {}", objectMessage);
     }
 
     /**
@@ -76,10 +77,11 @@ public class RocketMQTemplateProducer {
      * @param message 消息体
      */
     public void asyncSendMessage(String topic, Object message) {
-        this.rocketMQTemplate.asyncSend(topic, message, new SendCallback() {
+        Message<Object> objectMessage = MessageBuilder.withPayload(message).setHeader(CommonConstant.TRACE_ID_HEADER, MDCTraceUtils.getTraceId()).build();
+        this.rocketMQTemplate.asyncSend(topic, objectMessage, new SendCallback() {
             @Override
             public void onSuccess(SendResult sendResult) {
-                LOGGER.info("异步消息发送成功，message = {}, SendStatus = {}", message, sendResult.getSendStatus());
+                LOGGER.info("异步消息发送成功，message = {}, SendStatus = {}", objectMessage, sendResult.getSendStatus());
             }
 
             @Override
@@ -150,8 +152,9 @@ public class RocketMQTemplateProducer {
      *                   "1s 5s 10s 30s 1m 2m 3m 4m 5m 6m 7m 8m 9m 10m 20m 30m 1h 2h";
      */
     public void syncSendDelay(String topic, Object message, long timeout, int delayLevel) {
-        this.rocketMQTemplate.syncSend(topic, MessageBuilder.withPayload(message).build(), timeout, delayLevel);
-        LOGGER.info("已同步发送延时消息 message = {}", message);
+        Message<Object> objectMessage = MessageBuilder.withPayload(message).setHeader(CommonConstant.TRACE_ID_HEADER, MDCTraceUtils.getTraceId()).build();
+        this.rocketMQTemplate.syncSend(topic, MessageBuilder.withPayload(objectMessage).build(), timeout, delayLevel);
+        LOGGER.info("已同步发送延时消息 message = {}", objectMessage);
     }
 
     /**

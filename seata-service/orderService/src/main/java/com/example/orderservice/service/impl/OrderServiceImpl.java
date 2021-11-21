@@ -1,7 +1,5 @@
 package com.example.orderservice.service.impl;
 
-import com.central.common.constant.CommonConstant;
-import com.central.log.trace.MDCTraceUtils;
 import com.example.orderservice.domain.Demo01Message;
 import com.example.orderservice.domain.Order;
 import com.example.orderservice.service.AccountService;
@@ -9,12 +7,8 @@ import com.example.orderservice.service.OrderService;
 import com.example.orderservice.service.StorageService;
 import com.example.traceIdRocketmq.template.RocketMQTemplateProducer;
 import org.apache.commons.compress.utils.Lists;
-import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.slf4j.MDC;
-import org.springframework.messaging.Message;
-import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -54,24 +48,16 @@ public class OrderServiceImpl implements OrderService {
         list.add(order);
         list.add(order);
 
+        //【日志链路追踪】线程池消息队列测试.
         List<CompletableFuture<Integer>> completableFutureList = list.stream()
-                .map(or -> CompletableFuture.supplyAsync(() -> {
-                    LOGGER.info("11下单异步数据统计");
-                    return 22;
-                }, executorService))
+                .map(or -> CompletableFuture.supplyAsync(this::extracted, executorService))
                 .collect(Collectors.toList());
-
         List<Integer> integerList = completableFutureList.stream()
                 .map(CompletableFuture::join)
                 .collect(Collectors.toList());
-
         LOGGER.info("integerList={}", integerList);
 
-        executorService.submit(() -> {
-            LOGGER.info("下单异步数据统计.");
-        });
-
-        // 同步发送消息
+        //【日志链路追踪】RocketMQ同步发送消息
         rocketMQTemplateProducer.syncSendMessage(Demo01Message.TOPIC, order);
 
         LOGGER.info("------->下单开始");
@@ -79,17 +65,17 @@ public class OrderServiceImpl implements OrderService {
         LOGGER.info("------->order-service中创建订单");
 
 
-        //远程调用库存服务扣减库存
+        //【日志链路追踪】远程调用库存服务扣减库存
         LOGGER.info("------->order-service中扣减库存开始");
         storageService.decrease(order.getProductId(), order.getCount());
         LOGGER.info("------->order-service中扣减库存结束");
 
-        //远程调用账户服务扣减余额
+        //【日志链路追踪】远程调用账户服务扣减余额
         LOGGER.info("------->order-service中扣减余额开始");
         accountService.decrease(order.getUserId(), order.getMoney());
         LOGGER.info("------->order-service中扣减余额结束");
 
-        //修改订单状态为已完成
+        //【日志链路追踪】修改订单状态为已完成
         LOGGER.info("------->order-service中修改订单状态开始");
 
         LOGGER.info("------->order-service中修改订单状态中");
@@ -97,5 +83,10 @@ public class OrderServiceImpl implements OrderService {
         LOGGER.info("------->order-service中修改订单状态结束");
 
         LOGGER.info("------->下单结束");
+    }
+
+    private int extracted() {
+        LOGGER.info("11下单异步数据统计");
+        return 22;
     }
 }
