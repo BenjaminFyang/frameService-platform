@@ -13,6 +13,18 @@ logging:
     org.springframework.cloud.gateway: debug
 
 
+# 在配置文件中禁用默认的URLHttpConnection，启动okhttp
+feign:
+  hystrix:
+    enabled: true
+  okhttp:
+    enabled: true
+  httpclient:
+    connectionTimeout: 1000
+  client:
+    config:
+      default:
+        readTimeout: 1000
 
 # rocketmq 配置项，对应 RocketMQProperties 配置类
 rocketmq:

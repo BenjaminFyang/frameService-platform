@@ -1,7 +1,6 @@
 package com.example.traceidgateway.filter;
 
 import cn.hutool.core.util.IdUtil;
-import com.central.common.constant.CommonConstant;
 import com.central.log.properties.TraceProperties;
 import org.slf4j.MDC;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;

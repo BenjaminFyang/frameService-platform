@@ -1,7 +1,5 @@
 package com.central.common.lb.config;
 
-import com.central.common.constant.CommonConstant;
-import com.central.common.constant.SecurityConstants;
 import feign.RequestInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.context.request.RequestContextHolder;

@@ -20,7 +20,6 @@ public abstract class AbstractRocketListener<T> implements RocketMQListener<Mess
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
-
     @Override
     public void onMessage(MessageExt messageExt) {
 

@@ -34,6 +34,12 @@
         </dependency>
 
 
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-okhttp</artifactId>
+            <version>11.0</version>
+        </dependency>
+
         <!--        &lt;!&ndash; 实现对 RocketMQ 的自动化配置 &ndash;&gt;-->
         <!--        <dependency>-->
         <!--            <groupId>org.apache.rocketmq</groupId>-->

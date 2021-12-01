@@ -4,10 +4,11 @@ package com.central.common.constant;
  * 全局公共常量
  */
 public interface CommonConstant {
+
     /**
      * 项目版本号(banner使用)
      */
-    String PROJECT_VERSION = "5.0.0";
+    String PROJECT_VERSION = "5.1.0";
 
     /**
      * token请求头名称
