@@ -1,4 +1,4 @@
-package com.example.orderservice.config;
+package com.example.feignokhttp;
 
 import okhttp3.ConnectionPool;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -7,20 +7,14 @@ import org.springframework.cloud.commons.httpclient.OkHttpClientFactory;
 import org.springframework.cloud.openfeign.FeignClientProperties;
 import org.springframework.cloud.openfeign.support.FeignHttpClientProperties;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.PreDestroy;
-import javax.annotation.Resource;
 import java.util.concurrent.TimeUnit;
 
-@Configuration(proxyBeanMethods = false)
 @ConditionalOnMissingBean(okhttp3.OkHttpClient.class)
 public class FeignOkHttpConfig {
 
     private okhttp3.OkHttpClient okHttpClient;
-
-    @Resource
-    private MyOkhttpInterceptor myOkhttpInterceptor;
 
     @Bean
     @ConditionalOnMissingBean(ConnectionPool.class)
@@ -35,17 +29,23 @@ public class FeignOkHttpConfig {
     @ConditionalOnMissingBean(okhttp3.OkHttpClient.class)
     public okhttp3.OkHttpClient okHttpClient(OkHttpClientFactory httpClientFactory, ConnectionPool connectionPool, FeignClientProperties feignClientProperties, FeignHttpClientProperties feignHttpClientProperties) {
         FeignClientProperties.FeignClientConfiguration defaultConfig = feignClientProperties.getConfig().get("default");
-        int connectTimeout = feignHttpClientProperties.getConnectionTimeout();
+        int connectionTimeout = feignHttpClientProperties.getConnectionTimeout();
         int readTimeout = defaultConfig.getReadTimeout();
         boolean disableSslValidation = feignHttpClientProperties.isDisableSslValidation();
         boolean followRedirects = feignHttpClientProperties.isFollowRedirects();
         this.okHttpClient = httpClientFactory.createBuilder(disableSslValidation)
+                // 设置读超时
                 .readTimeout(readTimeout, TimeUnit.MILLISECONDS)
-                .connectTimeout(connectTimeout, TimeUnit.MILLISECONDS)
+                //设置连接超时
+                .connectTimeout(connectionTimeout, TimeUnit.MILLISECONDS)
                 .followRedirects(followRedirects)
                 .connectionPool(connectionPool)
                 // 这里设置我们自定义的拦截器
-                .addInterceptor(myOkhttpInterceptor)
+                .addInterceptor(new MyOkhttpInterceptor())
+                //设置写超时
+                .writeTimeout(10, TimeUnit.SECONDS)
+                //是否自动重连
+                .retryOnConnectionFailure(true)
                 .build();
         return this.okHttpClient;
     }
@@ -57,6 +57,5 @@ public class FeignOkHttpConfig {
             this.okHttpClient.connectionPool().evictAll();
         }
     }
-
 
 }

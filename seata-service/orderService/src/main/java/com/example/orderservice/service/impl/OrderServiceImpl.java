@@ -64,7 +64,6 @@ public class OrderServiceImpl implements OrderService {
         //本应用创建订单
         LOGGER.info("------->order-service中创建订单");
 
-
         //【日志链路追踪】远程调用库存服务扣减库存
         LOGGER.info("------->order-service中扣减库存开始");
         storageService.decrease(order.getProductId(), order.getCount());

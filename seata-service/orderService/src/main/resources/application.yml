@@ -15,16 +15,19 @@ logging:
 
 # 在配置文件中禁用默认的URLHttpConnection，启动okhttp
 feign:
-  hystrix:
-    enabled: true
+  # 开启okhttp
   okhttp:
     enabled: true
   httpclient:
-    connectionTimeout: 1000
+    connectionTimeout: 5000
+    followRedirects: true
   client:
     config:
       default:
-        readTimeout: 1000
+        readTimeout: 5000
+        writeTimeout: 5000
+
+
 
 # rocketmq 配置项，对应 RocketMQProperties 配置类
 rocketmq:

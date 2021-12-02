@@ -1,5 +1,7 @@
 package com.central.common.lb.config;
 
+import com.central.common.constant.CommonConstant;
+import com.central.common.constant.SecurityConstants;
 import feign.RequestInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -13,8 +15,6 @@ import java.util.List;
 
 /**
  * feign拦截器，只包含http相关数据
- *
- * @author zlt
  */
 public class FeignHttpInterceptorConfig {
     protected List<String> requestHeaders = new ArrayList<>();

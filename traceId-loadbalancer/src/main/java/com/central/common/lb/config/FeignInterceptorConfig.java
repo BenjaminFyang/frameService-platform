@@ -1,6 +1,7 @@
 package com.central.common.lb.config;
 
 import cn.hutool.core.util.StrUtil;
+import com.central.common.constant.SecurityConstants;
 import com.central.common.context.TenantContextHolder;
 import feign.RequestInterceptor;
 import org.springframework.context.annotation.Bean;

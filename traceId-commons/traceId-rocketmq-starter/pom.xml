@@ -8,7 +8,6 @@
         <version>2.0.0</version>
     </parent>
 
-
     <artifactId>traceId-rocketmq-starter</artifactId>
     <description>Rocketmq消息队列封装</description>
     <packaging>jar</packaging>

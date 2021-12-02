@@ -1,10 +1,10 @@
-package com.example.orderservice.config;
+package com.example.feignokhttp;
 
-import io.micrometer.core.instrument.util.StringUtils;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -12,12 +12,14 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 
 
+/**
+ * 对feign微服务调用的拦截 自定义返回结果.
+ */
 @Component
 public class MyOkhttpInterceptor implements Interceptor {
 
     Logger logger = LoggerFactory.getLogger(MyOkhttpInterceptor.class);
 
-    @Override
     public Response intercept(Chain chain) throws IOException {
         Request originRequest = chain.request();
         Request request = originRequest.newBuilder().build();
@@ -26,11 +28,17 @@ public class MyOkhttpInterceptor implements Interceptor {
         }
 
         long doTime = System.nanoTime();
-        Response response = chain.proceed(request);
-        long currentTime = System.nanoTime();
-        ResponseBody responseBody = response.peekBody(1024 * 1024);
-        logger.info(String.format("接收响应: [%s] %n返回json:【%s】 %.1fms%n", response.request().url(), responseBody.string(), (currentTime - doTime) / 1e6d));
+        Response response = null;
+        try {
+            response = chain.proceed(request);
+            ResponseBody responseBody = response.peekBody(1024 * 1024);
+            long currentTime = System.nanoTime();
+            logger.info(String.format("接收响应: [%s] %n返回json:【%s】 %.1fms%n", response.request().url(), responseBody.string(), (currentTime - doTime) / 1e6d));
+        } catch (IOException e) {
+            logger.error("MyOkhttpInterceptor调用微服务异常需处理", e);
+        }
         return response;
     }
+
 
 }

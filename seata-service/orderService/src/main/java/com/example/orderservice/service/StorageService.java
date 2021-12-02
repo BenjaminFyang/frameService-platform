@@ -12,6 +12,10 @@ public interface StorageService {
 
     /**
      * 扣减库存
+     *
+     * @param productId 对应商品的id.
+     * @param count     扣减库存的数量.
+     * @return the CommonResult
      */
     @GetMapping(value = "/storage/decrease")
     CommonResult<String> decrease(@RequestParam("productId") Long productId, @RequestParam("count") Integer count);

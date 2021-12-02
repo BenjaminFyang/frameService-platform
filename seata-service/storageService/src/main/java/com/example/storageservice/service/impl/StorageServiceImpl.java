@@ -18,6 +18,12 @@ public class StorageServiceImpl implements StorageService {
     public void decrease(Long productId, Integer count) {
         LOGGER.info("------->storage-service中扣减库存开始");
 
+        //模拟超时异常，全局事务回滚
+        try {
+            Thread.sleep(3 * 1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         LOGGER.info("------->storage-service中扣减库存结束");
     }
 }
