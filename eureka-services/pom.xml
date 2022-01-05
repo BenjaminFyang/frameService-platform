@@ -10,7 +10,7 @@
         <version>2.0.1</version>
     </parent>
 
-    <artifactId>seata-server</artifactId>
+    <artifactId>eureka-service</artifactId>
     <description>扣减商家库存</description>
     <packaging>pom</packaging>
 
