@@ -1,0 +1,10 @@
+server:
+  port: 8182
+spring:
+  application:
+    name: nacos-account-service
+
+logging:
+  level:
+    org.springframework.cloud.gateway: debug
+

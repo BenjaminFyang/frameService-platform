@@ -497,11 +497,11 @@
     <modules>
         <!-- 公共模块 -->
         <module>traceId-commons</module>
-<!--        &lt;!&ndash;微服务模块&ndash;&gt;-->
-<!--        <module>seata-service</module>-->
-<!--        <module>traceId-eureka</module>-->
-<!--        <module>traceId-gateway</module>-->
-<!--        <module>traceId-loadbalancer</module>-->
+        <!--微服务模块-->
+        <module>seata-service</module>
+        <!--        <module>traceId-eureka</module>-->
+        <!--        <module>traceId-gateway</module>-->
+        <!--        <module>traceId-loadbalancer</module>-->
     </modules>
 
     <licenses>
