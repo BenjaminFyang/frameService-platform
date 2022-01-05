@@ -498,7 +498,7 @@
         <!-- 公共模块 -->
         <module>traceId-commons</module>
         <!--微服务模块-->
-        <module>seata-service</module>
+        <module>eureka-service</module>
         <!--        <module>traceId-eureka</module>-->
         <!--        <module>traceId-gateway</module>-->
         <!--        <module>traceId-loadbalancer</module>-->
