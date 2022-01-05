@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
+
 
     <parent>
         <groupId>com.example</groupId>
-        <artifactId>traceId-commons</artifactId>
-        <version>2.0.0</version>
+        <artifactId>services-traceId</artifactId>
+        <version>2.0.1</version>
     </parent>
 
-    <artifactId>seata-com.example</artifactId>
-    <name>seata-com.example</name>
+
+    <artifactId>seata-server</artifactId>
     <description>扣减商家库存</description>
     <packaging>pom</packaging>
 
+
     <modules>
         <!-- 库存中心 -->
-        <module>storageService</module>
+        <!--        <module>storageService</module>-->
         <!-- 账号中心 -->
-        <module>accountService</module>
+        <!--        <module>accountService</module>-->
         <!-- 订单中心 -->
         <module>orderService</module>
     </modules>

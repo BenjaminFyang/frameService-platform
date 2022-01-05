@@ -42,7 +42,6 @@ public class OrderServiceImpl implements OrderService {
      */
     @Override
     public void create(Order order) {
-
         List<Order> list = Lists.newArrayList();
         list.add(order);
         list.add(order);

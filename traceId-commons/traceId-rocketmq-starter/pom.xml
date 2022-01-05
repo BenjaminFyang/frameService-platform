@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.example</groupId>
         <artifactId>traceId-commons</artifactId>
-        <version>2.0.0</version>
+        <version>2.0.1</version>
     </parent>
 
     <artifactId>traceId-rocketmq-starter</artifactId>
@@ -16,14 +16,14 @@
 
         <dependency>
             <groupId>com.example</groupId>
-            <artifactId>traceId-log-springCloud-starter</artifactId>
-            <version>2.0.0</version>
+            <artifactId>traceId-common-core</artifactId>
+            <version>2.0.1</version>
         </dependency>
 
         <dependency>
             <groupId>com.example</groupId>
-            <artifactId>traceId-common-core</artifactId>
-            <version>2.0.0</version>
+            <artifactId>traceId-log-springCloud-starter</artifactId>
+            <version>2.0.1</version>
         </dependency>
 
         <dependency>

@@ -4,6 +4,8 @@ spring:
   application:
     name: seata-account-service
 
+server_urls: http://localhost:8200
+
 eureka:
   client:
     service-url:

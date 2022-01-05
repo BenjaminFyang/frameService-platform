@@ -40,5 +40,4 @@ public abstract class AbstractRocketListener<T> implements RocketMQListener<Mess
      */
     public abstract void doJob(T t);
 
-
 }

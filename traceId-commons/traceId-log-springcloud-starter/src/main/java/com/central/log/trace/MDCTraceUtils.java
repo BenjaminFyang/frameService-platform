@@ -1,5 +1,6 @@
 package com.central.log.trace;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
 
 import java.util.UUID;
@@ -7,6 +8,8 @@ import java.util.UUID;
 /**
  * 日志追踪工具类
  */
+
+@Slf4j
 public class MDCTraceUtils {
     /**
      * 追踪id的名称
@@ -55,6 +58,8 @@ public class MDCTraceUtils {
      * 创建traceId
      */
     public static String createTraceId() {
-        return UUID.randomUUID().toString().replace("-", "").toUpperCase();
+        String toUpperCase = UUID.randomUUID().toString().replace("-", "").toUpperCase();
+        log.info("生成的日志跟踪id为traceId={}", toUpperCase);
+        return toUpperCase;
     }
 }

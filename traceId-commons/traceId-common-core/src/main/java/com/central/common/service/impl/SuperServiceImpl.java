@@ -22,7 +22,6 @@ import java.util.concurrent.TimeUnit;
 /**
  * service实现父类
  * <p>
- * Github: https://github.com/zlt2000
  */
 public class SuperServiceImpl<M extends BaseMapper<T>, T> extends ServiceImpl<M, T> implements ISuperService<T> {
     @Override

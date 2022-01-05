@@ -3,6 +3,10 @@ server:
 spring:
   application:
     name: seata-order-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/user-center?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai
+    username: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
 eureka:
   client:
@@ -11,7 +15,6 @@ eureka:
 logging:
   level:
     org.springframework.cloud.gateway: debug
-
 
 # 在配置文件中禁用默认的URLHttpConnection，启动okhttp
 feign:
@@ -26,6 +29,8 @@ feign:
       default:
         readTimeout: 5000
         writeTimeout: 5000
+
+
 
 
 

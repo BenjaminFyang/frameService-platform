@@ -23,6 +23,16 @@ public class OrderController {
     @PostMapping("/create")
     public CommonResult<String> create(@RequestBody Order order) {
         orderService.create(order);
+
+        int i = 1 / 0;
+        System.out.println(111);
+
+        System.out.println("222");
+//        while (true) {
+//            Order order1 = new Order();
+//        }
+
+
         return CommonResult.success("订单创建成功!");
     }
 

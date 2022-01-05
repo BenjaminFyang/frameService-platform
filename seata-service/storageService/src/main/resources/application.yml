@@ -4,6 +4,9 @@ spring:
   application:
     name: seata-storage-service
 
+#server_urls: http://localhost:8200
+#service_name: orderfy
+
 eureka:
   client:
     service-url:

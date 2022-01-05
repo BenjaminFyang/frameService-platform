@@ -20,7 +20,9 @@ public class MyOkhttpInterceptor implements Interceptor {
 
     Logger logger = LoggerFactory.getLogger(MyOkhttpInterceptor.class);
 
-    public Response intercept(Chain chain) throws IOException {
+    @Override
+    @SuppressWarnings("all")
+    public Response intercept(Chain chain) {
         Request originRequest = chain.request();
         Request request = originRequest.newBuilder().build();
         if (StringUtils.isNotEmpty(originRequest.header("Accept-Encoding"))) {

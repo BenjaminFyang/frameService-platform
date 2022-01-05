@@ -5,53 +5,48 @@
 
     <parent>
         <groupId>com.example</groupId>
-        <artifactId>traceId-commons</artifactId>
-        <version>2.0.0</version>
+        <artifactId>seata-server</artifactId>
+        <version>2.0.1</version>
     </parent>
 
     <artifactId>orderService</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <name>orderService</name>
     <description>订单中心</description>
 
     <dependencies>
-        <dependency>
-            <groupId>com.example</groupId>
-            <artifactId>traceId-common-core</artifactId>
-            <version>2.0.0</version>
-        </dependency>
 
         <dependency>
             <groupId>com.example</groupId>
-            <artifactId>traceId-log-springCloud-starter</artifactId>
-            <version>2.0.0</version>
+            <artifactId>feignOkHttp</artifactId>
+            <version>2.0.1</version>
         </dependency>
 
         <dependency>
             <groupId>com.example</groupId>
             <artifactId>traceId-rocketmq-starter</artifactId>
-            <version>2.0.0</version>
+            <version>2.0.1</version>
         </dependency>
 
         <dependency>
-            <groupId>com.example</groupId>
-            <artifactId>feignOkHttp</artifactId>
-            <version>2.0.0</version>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
-
 
         <dependency>
-            <groupId>io.github.openfeign</groupId>
-            <artifactId>feign-okhttp</artifactId>
-            <version>11.0</version>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
         </dependency>
 
-        <!--        &lt;!&ndash; 实现对 RocketMQ 的自动化配置 &ndash;&gt;-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.apache.rocketmq</groupId>-->
-        <!--            <artifactId>rocketmq-spring-boot-starter</artifactId>-->
-        <!--            <version>2.1.1</version>-->
-        <!--        </dependency>-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-extension</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus</artifactId>
+        </dependency>
+
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -82,6 +77,8 @@
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
+
+
     </dependencies>
 
 
