@@ -446,6 +446,8 @@
         <module>accountService</module>
         <!-- 订单中心 -->
         <module>orderService</module>
+        <!--注册中心-->
+        <module>eurekaService</module>
     </modules>
 
 </project>
