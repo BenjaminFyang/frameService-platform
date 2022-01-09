@@ -38,10 +38,7 @@
             <artifactId>mybatis-plus</artifactId>
             <optional>true</optional>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.social</groupId>
-            <artifactId>spring-social-security</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-core</artifactId>
@@ -86,10 +83,6 @@
             <optional>true</optional>
         </dependency>
 
-        <dependency>
-            <groupId>com.nepxion</groupId>
-            <artifactId>banner</artifactId>
-        </dependency>
 
         <dependency>
             <groupId>io.projectreactor</groupId>
@@ -117,6 +110,14 @@
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
         </dependency>
 
 

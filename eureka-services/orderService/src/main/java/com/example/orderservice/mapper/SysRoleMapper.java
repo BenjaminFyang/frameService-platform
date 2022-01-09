@@ -2,12 +2,11 @@ package com.example.orderservice.mapper;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.central.common.model.SysRole;
-import org.mapstruct.Mapper;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
-
-import org.springframework.data.repository.query.Param;
 
 
 /**

@@ -6,7 +6,7 @@ import com.example.orderservice.service.AccountService;
 import com.example.orderservice.service.OrderService;
 import com.example.orderservice.service.StorageService;
 import com.example.traceIdRocketmq.template.RocketMQTemplateProducer;
-import org.apache.commons.compress.utils.Lists;
+import com.google.common.collect.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

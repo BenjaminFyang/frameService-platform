@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 public class TraceInterceptor implements HandlerInterceptor {
 
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
         String traceId = request.getHeader(CommonConstant.TRACE_ID_HEADER);
         if (StringUtils.isNotEmpty(traceId)) {
             MDC.put(CommonConstant.TRACE_ID_HEADER, traceId);

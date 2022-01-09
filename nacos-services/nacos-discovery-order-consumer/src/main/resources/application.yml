@@ -8,8 +8,20 @@ spring:
         server-addr: 127.0.0.1:8848 # Nacos 服务器地址
 
 server:
-  port: 8180 # 服务器端口。默认为 8080
+  port: 8183 # 服务器端口。默认为 8080
 
-logging:
-  level:
-    org.springframework.cloud.gateway: debug
+
+# 在配置文件中禁用默认的URLHttpConnection，启动okhttp
+feign:
+  # 开启okhttp
+  okhttp:
+    enabled: true
+  httpclient:
+    connectionTimeout: 5000
+    followRedirects: true
+  client:
+    config:
+      default:
+        readTimeout: 5000
+        writeTimeout: 5000
+

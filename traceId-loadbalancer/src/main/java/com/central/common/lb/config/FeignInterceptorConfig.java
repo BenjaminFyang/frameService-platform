@@ -1,6 +1,6 @@
 package com.central.common.lb.config;
 
-import cn.hutool.core.util.StrUtil;
+import com.alibaba.cloud.commons.lang.StringUtils;
 import com.central.common.constant.SecurityConstants;
 import com.central.common.context.TenantContextHolder;
 import feign.RequestInterceptor;
@@ -19,7 +19,7 @@ public class FeignInterceptorConfig {
         return template -> {
             // 传递client 得到当前线程存储的数据然后进行传递.
             String tenant = TenantContextHolder.getTenant();
-            if (StrUtil.isNotEmpty(tenant)) {
+            if (StringUtils.isNotEmpty(tenant)) {
                 template.header(SecurityConstants.TENANT_HEADER, tenant);
             }
         };
