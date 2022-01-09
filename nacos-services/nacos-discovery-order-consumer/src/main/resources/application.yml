@@ -10,7 +10,7 @@ server:
 feign:
   # 开启okhttp
   okhttp:
-    enabled: trues
+    enabled: true
   httpclient:
     connectionTimeout: 5000
     followRedirects: true
