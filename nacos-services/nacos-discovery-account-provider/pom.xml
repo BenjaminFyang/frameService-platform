@@ -49,7 +49,12 @@
             <groupId>com.example</groupId>
             <artifactId>traceId-common-core</artifactId>
             <version>2.0.1</version>
-            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>traceId-log-springCloud-starter</artifactId>
+            <version>2.0.1</version>
         </dependency>
 
 
