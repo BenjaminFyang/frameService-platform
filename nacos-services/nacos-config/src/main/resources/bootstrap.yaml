@@ -1,6 +1,7 @@
 spring:
   application:
     name: nacos-config-service # Spring 应用名
+
   cloud:
     nacos:
       # Nacos Config 配置项，对应 NacosConfigProperties 配置属性类
@@ -10,6 +11,3 @@ spring:
         group: DEFAULT_GROUP # 使用的 Nacos 配置分组，默认为 DEFAULT_GROUP
         name: # 使用的 Nacos 配置集的 dataId，默认为 spring.application.name
         file-extension: yaml # 使用的 Nacos 配置集的 dataId 的文件拓展名，同时也是 Nacos 配置集的配置格式，默认为 properties
-
-server:
-  port: 8195 # 服务器端口。默认为 8080
