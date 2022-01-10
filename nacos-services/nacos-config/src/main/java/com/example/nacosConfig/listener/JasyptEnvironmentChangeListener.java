@@ -1,4 +1,4 @@
-package com.example.nacosConfig.Listener;
+package com.example.nacosConfig.listener;
 
 import org.apache.commons.lang3.StringUtils;
 import org.jasypt.encryption.StringEncryptor;

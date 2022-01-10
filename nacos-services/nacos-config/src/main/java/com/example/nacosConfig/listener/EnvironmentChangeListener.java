@@ -1,4 +1,4 @@
-package com.example.nacosConfig.Listener;
+package com.example.nacosConfig.listener;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
