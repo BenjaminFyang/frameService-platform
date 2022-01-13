@@ -1,5 +1,6 @@
 package com.example.orderservice;
 
+import co.elastic.apm.attach.ElasticApmAttacher;
 import com.example.traceIdRocketmq.annotation.EnableHyhRocketMq;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;

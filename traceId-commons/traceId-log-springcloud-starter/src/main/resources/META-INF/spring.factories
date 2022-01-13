@@ -3,5 +3,5 @@ com.central.log.config.TtlMDCAdapterInitializer
 
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
 com.central.log.properties.TraceProperties,\
-com.central.log.trace.WebTraceFilter,\
-com.central.log.trace.FeignTraceInterceptor
+com.central.log.trace.WebTraceFilter
+#com.central.log.trace.FeignTraceInterceptor

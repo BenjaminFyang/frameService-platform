@@ -18,7 +18,6 @@ public class FeignTraceInterceptor implements RequestInterceptor {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(FeignTraceInterceptor.class);
 
-
     @Resource
     private TraceProperties traceProperties;
 

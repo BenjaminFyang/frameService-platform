@@ -57,7 +57,7 @@
         <module>traceId-commons</module>
         <!--微服务模块-->
         <module>eureka-services</module>
-        <!--        <module>traceId-eureka</module>-->
+        <module>nacos-services</module>
         <!--        <module>traceId-gateway</module>-->
         <!--        <module>traceId-loadbalancer</module>-->
     </modules>
