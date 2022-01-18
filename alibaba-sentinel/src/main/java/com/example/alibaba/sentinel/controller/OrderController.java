@@ -1,5 +1,6 @@
 package com.example.alibaba.sentinel.controller;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.central.common.api.CommonResult;
 
 import com.example.alibaba.sentinel.domain.Order;
@@ -23,9 +24,15 @@ public class OrderController {
 
     @GetMapping("/sleep")
     public CommonResult<String> sleep() throws InterruptedException {
-        Thread.sleep(100L);
+        Thread.sleep(200L);
         return CommonResult.success("sleep!");
     }
 
+    // 测试热点数据限流
+    @GetMapping("/orderInfo")
+    @SentinelResource("orderInfo")
+    public CommonResult<String> orderInfo(Integer id) {
+        return CommonResult.success("订单编号：" + id);
+    }
 
 }
