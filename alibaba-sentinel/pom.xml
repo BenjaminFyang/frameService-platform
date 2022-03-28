@@ -75,6 +75,12 @@
             <artifactId>lombok</artifactId>
         </dependency>
 
+        <!-- Sentinel 对 Nacos 作为数据源的支持 -->
+        <dependency>
+            <groupId>com.alibaba.csp</groupId>
+            <artifactId>sentinel-datasource-nacos</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>com.example</groupId>
             <artifactId>traceId-log-springCloud-starter</artifactId>
