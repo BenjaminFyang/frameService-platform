@@ -55,9 +55,6 @@ spring:
             inline:
               algorithm-expression: orders_$->{user_id % 8}
               sharding-column: user_id
-        # order_config 表配置
-        order_config:
-          actualDataNodes: ds-orders-0.order_config # 仅映射到 ds-orders-0 数据源的 order_config 表
 
       # 读写分离配置，对应 YamlMasterSlaveRuleConfiguration 配置类
       master-slave-rules:
