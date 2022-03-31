@@ -1,9 +1,9 @@
 package com.example.kafka.message;
 
 /**
- * 示例 06 的 Message 消息
+ * Message 消息
  */
-public class Demo06Message {
+public class DemoMessage {
 
     public static final String TOPIC = "DEMO_06";
 
@@ -12,7 +12,7 @@ public class Demo06Message {
      */
     private Integer id;
 
-    public Demo06Message setId(Integer id) {
+    public DemoMessage setId(Integer id) {
         this.id = id;
         return this;
     }

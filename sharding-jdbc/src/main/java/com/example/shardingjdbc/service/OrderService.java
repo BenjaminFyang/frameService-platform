@@ -19,24 +19,24 @@ public class OrderService {
     @Transactional
     public void add(OrderDO order) {
 
-        // 这里先假模假样的读取一下。读取从库
+        // 这里先读取一下。读取从库
         OrderDO exists = orderMapper.selectById(1);
         System.out.println(exists);
 
         // 插入订单
         orderMapper.insert(order);
 
-        // 这里先假模假样的读取一下。读取主库
+        // 这里先读取一下。读取主库
         exists = orderMapper.selectById(1);
         log.info("[OrderService][对应的订单数据为order={}]", exists);
     }
 
-    public OrderDO findById(Integer id) {
-        OrderDO order = new OrderDO();
-        order.setUserId(20);
-        add(order);
-
-        return orderMapper.selectById(id);
-    }
+//    public OrderDO findById(Integer id) {
+//        OrderDO order = new OrderDO();
+//        order.setUserId(20);
+//        add(order);
+//
+//        return orderMapper.selectById(id);
+//    }
 
 }

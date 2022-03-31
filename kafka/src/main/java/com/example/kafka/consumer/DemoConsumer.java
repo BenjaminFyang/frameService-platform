@@ -1,18 +1,18 @@
 package com.example.kafka.consumer;
 
-import com.example.kafka.message.Demo06Message;
+import com.example.kafka.message.DemoMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Demo06Consumer {
+public class DemoConsumer {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
-    @KafkaListener(topics = Demo06Message.TOPIC, groupId = "demo06-consumer-group-" + Demo06Message.TOPIC, concurrency = "2")
-    public void onMessage(Demo06Message message) {
+    @KafkaListener(topics = DemoMessage.TOPIC, groupId = "demo06-consumer-group-" + DemoMessage.TOPIC, concurrency = "2")
+    public void onMessage(DemoMessage message) {
         logger.info("[onMessage][线程编号:{} 消息内容：{}]", Thread.currentThread().getId(), message);
     }
 

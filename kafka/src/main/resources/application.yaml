@@ -20,7 +20,7 @@ spring:
         spring:
           json:
             trusted:
-              packages: cn.iocoder.springboot.lab03.kafkademo.message
+              packages: com.example.kafka.message
 
     # Kafka Consumer Listener 监听器配置
     listener:
